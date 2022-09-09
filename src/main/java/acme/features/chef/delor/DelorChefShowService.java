@@ -1,31 +1,28 @@
-package acme.features.chef.pimpam;
+package acme.features.chef.delor;
 
 
-
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.entities.artifact.Artifact;
-import acme.entities.pimpam.Pimpam;
+import acme.entities.delor.Delor;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Request;
 import acme.framework.services.AbstractShowService;
 import acme.roles.Chef;
 
 @Service
-public class PimpamShowService implements AbstractShowService<Chef, Pimpam>{
+public class DelorChefShowService implements AbstractShowService<Chef, Delor>{
 	
 	// Internal state ---------------------------------------------------------
 
 			@Autowired
-			protected PimpamRepository repository;
+			protected DelorChefRepository repository;
 
 			// AbstractShowService<Anonymous, Announcement> interface --------------------------
 
 			@Override
-			public boolean authorise(final Request<Pimpam> request) {
+			public boolean authorise(final Request<Delor> request) {
 				assert request != null;
 
 				
@@ -33,30 +30,30 @@ public class PimpamShowService implements AbstractShowService<Chef, Pimpam>{
 			}
 
 			@Override
-			public void unbind(final Request<Pimpam> request, final Pimpam entity, final Model model) {
+			public void unbind(final Request<Delor> request, final Delor entity, final Model model) {
 				assert request != null;
 				assert entity != null;
 				assert model != null;
 
 			
 				
-				request.unbind(entity, model, "code", "instantiationMoment", "title", "description", "startPeriod", "finishPeriod", "budget", "link");
-				model.setAttribute("artifactId", entity.getArtifact().getId());
-				model.setAttribute("artifactPublish", entity.getArtifact().isPublished());
+				request.unbind(entity, model, "keylet", "instantiationMoment", "subject", "explanation", "startPeriod", "finishPeriod", "income", "moreInfo");
+				model.setAttribute("ingredientId", entity.getIngredient().getId());
+				model.setAttribute("ingredientPublish", entity.getIngredient().isPublished());
 				model.setAttribute("isNew", false);
 				
 				
 			}
 
 			@Override
-			public Pimpam findOne(final Request<Pimpam> request) { 
+			public Delor findOne(final Request<Delor> request) { 
 				assert request != null;
 
-				Pimpam result;
+				Delor result;
 				int id;
 
 				id = request.getModel().getInteger("id");
-				result = this.repository.findOnePimpamById(id);
+				result = this.repository.findOneDelorById(id);
 
 				return result;
 			}

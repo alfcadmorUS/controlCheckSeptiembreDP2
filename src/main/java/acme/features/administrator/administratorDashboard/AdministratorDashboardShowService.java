@@ -118,41 +118,43 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 			minimumFineDishBudget.put(status, minimumBudgetFormat != null ? minimumBudgetFormat : 0);
 		}
 		
-		final Map<String,Double> averagePimpamBudget = new HashMap<String, Double>();
+		//PIMPAM--------------------------------------------
+		
+		final Map<String,Double> averageDelorIncome = new HashMap<String, Double>();
 		for(final String currencies : acceptedCurrencies) {
-			final Double averageBudget = this.repository.calcAveragePimpamBudgetByCurrency(currencies);
-			final Double averageBudgetFormat = this.formatDouble(averageBudget);
-			averagePimpamBudget.put(currencies, averageBudgetFormat != null ? averageBudgetFormat : 0);
+			final Double averageIncome = this.repository.calcAverageDelorIncometByCurrency(currencies);
+			final Double averageIncomeFormat = this.formatDouble(averageIncome);
+			averageDelorIncome.put(currencies, averageIncomeFormat != null ? averageIncomeFormat : 0);
 		}
 		
-		final Map<String,Double> deviationPimpamBudget = new HashMap<String, Double>();
+		final Map<String,Double> deviationDelorIncome = new HashMap<String, Double>();
 		for(final String currencies : acceptedCurrencies) {
-			final Double deviationBudget = this.repository.calcDeviationPimpamBudgetByCurrency(currencies);
-			final Double deviationBudgetFormat = this.formatDouble(deviationBudget);
-			deviationPimpamBudget.put(currencies, deviationBudgetFormat != null ? deviationBudgetFormat : 0);
+			final Double deviationIncome = this.repository.calcDeviationDelorIncometByCurrency(currencies);
+			final Double deviationIncomeFormat = this.formatDouble(deviationIncome);
+			deviationDelorIncome.put(currencies, deviationIncomeFormat != null ? deviationIncomeFormat : 0);
 		}
 		
-		final Map<String,Double> maximumPimpamBudget = new HashMap<String, Double>();
+		final Map<String,Double> maximumDelorIncome = new HashMap<String, Double>();
 		for(final String currencies : acceptedCurrencies) {
-			final Double maximumBudget = this.repository.calcMaximumPimpamBudgetByCurrency(currencies);
-			final Double maximumBudgetFormat = this.formatDouble(maximumBudget);
-			maximumPimpamBudget.put(currencies, maximumBudgetFormat != null ? maximumBudgetFormat : 0);
+			final Double maximumIncome = this.repository.calcMaximumDelorIncometByCurrency(currencies);
+			final Double maximumIncomeFormat = this.formatDouble(maximumIncome);
+			maximumDelorIncome.put(currencies, maximumIncomeFormat != null ? maximumIncomeFormat : 0);
 		}
 		
-		final Map<String,Double> minimumPimpamBudget = new HashMap<String, Double>();
+		final Map<String,Double> minimumDelorIncome = new HashMap<String, Double>();
 		for(final String currencies : acceptedCurrencies) {
-			final Double minimumBudget = this.repository.calcMinimumPimpamBudgetByCurrency(currencies);
+			final Double minimumBudget = this.repository.calcMinimumDelorIncomeByCurrency(currencies);
 			final Double minimumBudgetFormat = this.formatDouble(minimumBudget);
-			minimumPimpamBudget.put(currencies, minimumBudgetFormat != null ? minimumBudgetFormat : 0);
+			minimumDelorIncome.put(currencies, minimumBudgetFormat != null ? minimumBudgetFormat : 0);
 		}
 		
-		final Integer nArtifacts = this.repository.findAllArtifact().size();
-		final Integer nPimpams = this.repository.findAllPimpam().size();
-		Double ratioOfArtifactsWithPimpam = (double) nPimpams / nArtifacts;
+		final Integer nIngredients = this.repository.findAllIngredients(ArtifactType.INGREDIENT).size();
+		final Integer nDelor = this.repository.findAllDelor().size();
+		final Double ratioOfIngredientsWithDelor = (double) nDelor / nIngredients;
 		
 		
 		
-		result.setRatioOfArtifactsWithPimpam(nArtifacts>0? ratioOfArtifactsWithPimpam:0.);		
+		result.setRatioOfIngredientsWithDelor(nIngredients>0? ratioOfIngredientsWithDelor:0.);		
 		result.setTotalArtifact(totalArtifact);
 		result.setAverageArtifactRetailPrice(averageArtifactRetailPrice);
 		result.setDeviationArtifactRetailPrice(deviationArtifactRetailPrice);
@@ -163,10 +165,10 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 		result.setDeviationFineDishBudget(deviationFineDishBudget);
 		result.setMaximumFineDishBudget(maximumFineDishBudget);
 		result.setMinimumFineDishBudget(minimumFineDishBudget);
-		result.setAveragePimpamBudget(averagePimpamBudget);
-		result.setDeviationPimpamBudget(deviationPimpamBudget);
-		result.setMaximumPimpamBudget(maximumPimpamBudget);
-		result.setMinimumPimpamBudget(minimumPimpamBudget);
+		result.setAverageDelorIncome(averageDelorIncome);
+		result.setDeviationDelorIncome(deviationDelorIncome);
+		result.setMaximumDelorIncome(maximumDelorIncome);
+		result.setMinimumDelorIncome(minimumDelorIncome);
 		return result;
 	}
 	

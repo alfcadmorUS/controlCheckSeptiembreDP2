@@ -40,15 +40,15 @@ public class AdministratorDashboard {
 	protected Map<StatusType, Double>					minimumFineDishBudget;
 	
 	//PIMPAM
-	protected Double								ratioOfArtifactsWithPimpam;
+	protected Double								ratioOfIngredientsWithDelor;
 	
-	protected Map<String, Double>					averagePimpamBudget;
+	protected Map<String, Double>					averageDelorIncome;
 	
-	protected Map<String, Double>					deviationPimpamBudget;
+	protected Map<String, Double>					deviationDelorIncome;
 	
-	protected Map<String, Double>					maximumPimpamBudget;
+	protected Map<String, Double>					maximumDelorIncome;
 	
-	protected Map<String, Double>					minimumPimpamBudget;
+	protected Map<String, Double>					minimumDelorIncome;
 	
 	// Derived attributes -----------------------------------------------------
 	

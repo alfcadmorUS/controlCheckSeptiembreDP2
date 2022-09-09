@@ -16,10 +16,10 @@
 <%@taglib prefix="acme" uri="urn:jsptagdir:/WEB-INF/tags"%>
 
 <acme:list>
-	<acme:list-column code="chef.pimpam.list.label.code" path="code" width="20%"/>
-	<acme:list-column code="chef.pimpam.list.label.instantiationMoment" path="instantiationMoment" width="20%"/>
-	<acme:list-column code="chef.pimpam.list.label.title" path="title" width="20%"/>
-	<acme:list-column code="chef.pimpam.list.label.description" path="description" width="30%"/>
+	<acme:list-column code="chef.delor.list.label.keylet" path="keylet" width="20%"/>
+	<acme:list-column code="chef.delor.list.label.instantiationMoment" path="instantiationMoment" width="20%"/>
+	<acme:list-column code="chef.delor.list.label.subject" path="subject" width="20%"/>
+	<acme:list-column code="chef.delor.list.label.explanation" path="explanation" width="30%"/>
 </acme:list>
 
-<acme:button code="chef.pimpam.list.button.create" action="/chef/pimpam/create"/>
+<acme:button code="chef.delor.list.button.create" action="/chef/delor/create"/>

@@ -1,14 +1,15 @@
 package acme.features.administrator.administratorDashboard;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import acme.entities.artifact.Artifact;
 import acme.entities.artifact.ArtifactType;
+import acme.entities.delor.Delor;
 import acme.entities.fineDish.StatusType;
-import acme.entities.pimpam.Pimpam;
 import acme.framework.repositories.AbstractRepository;
 
 @Repository
@@ -49,22 +50,22 @@ public interface AdministratorDashboardRepository extends AbstractRepository {
 	
 	//PIMPAM
 	
-	@Query("select avg(f.budget.amount) from Pimpam f where f.budget.currency = :currency")
-	Double calcAveragePimpamBudgetByCurrency(String currency);
+	@Query("select avg(f.income.amount) from Delor f where f.income.currency = :currency")
+	Double calcAverageDelorIncometByCurrency(String currency);
 
-	@Query("select stddev(f.budget.amount) from Pimpam f where f.budget.currency = :currency")
-	Double calcDeviationPimpamBudgetByCurrency(String currency);
+	@Query("select stddev(f.income.amount) from Delor f where f.income.currency = :currency")
+	Double calcDeviationDelorIncometByCurrency(String currency);
 
-	@Query("select max(f.budget.amount) from Pimpam f where f.budget.currency = :currency")
-	Double calcMaximumPimpamBudgetByCurrency(String currency);
+	@Query("select max(f.income.amount) from Delor f where f.income.currency = :currency")
+	Double calcMaximumDelorIncometByCurrency(String currency);
 
-	@Query("select min(f.budget.amount) from Pimpam f where f.budget.currency = :currency")
-	Double calcMinimumPimpamBudgetByCurrency(String currency);
+	@Query("select min(f.income.amount) from Delor f where f.income.currency = :currency")
+	Double calcMinimumDelorIncomeByCurrency(String currency);
 	
-	@Query("select c from Pimpam c")
-	Collection<Pimpam> findAllPimpam();
+	@Query("select c from Delor c")
+	Collection<Delor> findAllDelor();
 	
-	@Query("select a from Artifact a ")
-	Collection<Artifact> findAllArtifact();
+	@Query("select a from Artifact a where a.type = :artifactType")
+	List<Artifact> findAllIngredients(ArtifactType artifactType);
 
 }

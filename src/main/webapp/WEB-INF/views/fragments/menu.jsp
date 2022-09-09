@@ -71,7 +71,7 @@
 			<acme:menu-suboption code="master.menu.anonymous.artifact.ingredient" action="/chef/artifact/list-ingredient"/>
 			<acme:menu-suboption code="master.menu.anonymous.artifact.utensil" action="/chef/artifact/list-utensil"/>
 			<acme:menu-suboption code="master.menu.chef.recipes" action="/chef/recipe/list"/>
-			<acme:menu-suboption code="master.menu.chef.pimpam" action="/chef/pimpam/list"/>
+			<acme:menu-suboption code="master.menu.chef.delor" action="/chef/delor/list"/>
       <acme:menu-separator/>
       <acme:menu-suboption code="master.menu.chef.fine-dish" action="/chef/fine-dish/list"/>
       <acme:menu-suboption code="master.menu.chef.memorandum" action="/chef/memorandum/list"/>
